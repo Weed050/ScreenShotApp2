@@ -13,6 +13,19 @@ namespace ScreenShotApp2
         public Form1()
         {
             InitializeComponent();
+            if (File.Exists(@"variables.json") == false)
+            {
+                Variables1 variables1 = new Variables1()
+                {
+                    z = 0,
+                    directory = "C:\\Users\\Uczen\\Pictures\\Screenshots"
+                };
+                string strResultJson = string.Empty;
+                strResultJson = JsonConvert.SerializeObject(variables1);
+                File.WriteAllText(@"variables.json", strResultJson);
+                textBoxDisplay.Text= directory;
+            }
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,6 +49,7 @@ namespace ScreenShotApp2
             string strResultJson = string.Empty;
             strResultJson = JsonConvert.SerializeObject(variables1);
             File.WriteAllText(@"variables.json", strResultJson);
+           
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -62,7 +76,6 @@ namespace ScreenShotApp2
                 pictureBox1.Image = myImage;
 
             }
-
             Image copy = pictureBox1.Image;
             string inc2 = "";
             x = x + 1;
