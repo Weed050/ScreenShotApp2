@@ -8,42 +8,11 @@ namespace ScreenShotApp2
     public partial class Form1 : Form
     {
         public string directory1;
+        public string directory;
         public Form1()
         {
             InitializeComponent();
-            
-
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-           string strResultJson = string.Empty;
-            Variables1 variables = new Variables1()
-            {
-                
-            };
-
-            strResultJson = JsonConvert.SerializeObject(variables);
-            strResultJson = File.ReadAllText(@"variables.json");
-            //Variables1 resultVariables = JsonConvert.DeserializeObject<Variables1>(strResultJson);
-            //Console.WriteLine(resultVariables.ToString());
-
-            //Variables1 variables1 = new Variables1()
-            //{
-            //    z = z,
-            //    directory = directory
-            //};
-
-            strResultJson = JsonConvert.SerializeObject(variables);
-            File.WriteAllText(@"variables.json", strResultJson);
-            Console.WriteLine("stored!");
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             // pobranie lokalizacji do zapisania screen shota
@@ -67,6 +36,55 @@ namespace ScreenShotApp2
             strResultJson = JsonConvert.SerializeObject(variables1);
             File.WriteAllText(@"variables.json", strResultJson);
         }
-    
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string strResultJson = string.Empty;
+            strResultJson = File.ReadAllText(@"variables.json");
+            Variables1 resultVariables = JsonConvert.DeserializeObject<Variables1>(strResultJson);
+            Console.WriteLine(resultVariables.directory);
+            //Variables1 variables = new Variables1()
+            //{
+            //    directory1 = directory
+
+            //};
+            //strResultJson = JsonConvert.SerializeObject(variables);
+            
+
+
+
+            this.Hide();
+            SendKeys.Send("{PRTSC}");
+            if (Clipboard.GetImage() != null)
+            {
+                Image myImage = Clipboard.GetImage();
+                pictureBox1.Image = myImage;
+
+            }
+
+            Image copy = pictureBox1.Image;
+            string inc2 = "";
+            this.Show();
+            if (resultVariables.directory != null)
+            {
+                string directory2 = "";
+                directory2 = resultVariables.directory.ToString();
+                textBoxDisplay.Text = directory2;
+                copy.Save(directory2 + "\\ScreenShot_" + inc2 + ".png");
+
+                //Variables1 resultVariables = JsonConvert.DeserializeObject<Variables1>(strResultJson);
+                //Console.WriteLine(resultVariables.ToString());
+
+                Variables1 variables = new Variables1()
+                {
+                    z = Int32.Parse(inc2),
+                    directory = directory2
+                };
+
+                strResultJson = JsonConvert.SerializeObject(variables);
+                File.WriteAllText(@"variables.json", strResultJson);
+                Console.WriteLine("stored!");
+            }
+
+        }
     }
 }
