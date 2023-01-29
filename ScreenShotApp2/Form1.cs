@@ -18,8 +18,9 @@ namespace ScreenShotApp2
                 Variables1 variables1 = new Variables1()
                 {
                     z = 0,
-                    directory = "C:\\Users\\Uczen\\Pictures\\Screenshots"
-                };
+                    //directory = "C:\\Users\\Uczen\\Pictures\\Screenshots"
+                    directory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Pictures\\Screenshots"
+            };
                 string strResultJson = string.Empty;
                 strResultJson = JsonConvert.SerializeObject(variables1);
                 File.WriteAllText(@"variables.json", strResultJson);
