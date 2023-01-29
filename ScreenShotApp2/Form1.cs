@@ -5,12 +5,12 @@ using System.Text.Json.Nodes;
 
 namespace ScreenShotApp2
 {
-    public partial class Form1 : Form
+    public partial class ScreenShotApp : Form
     {
         public string directory1;
         public string directory;
         public int x;
-        public Form1()
+        public ScreenShotApp()
         {
             InitializeComponent();
             if (File.Exists(@"variables.json") == false)
@@ -18,7 +18,7 @@ namespace ScreenShotApp2
                 Variables1 variables1 = new Variables1()
                 {
                     z = 0,
-                    //directory = "C:\\Users\\Uczen\\Pictures\\Screenshots"
+                    //directory = "C:\\Users\\User\\Pictures\\Screenshots"
                     directory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "\\Pictures\\Screenshots"
             };
                 string strResultJson = string.Empty;
@@ -102,6 +102,11 @@ namespace ScreenShotApp2
                 File.WriteAllText(@"variables.json", strResultJson);
                 Console.WriteLine("stored!");
             }
+
+        }
+
+        private void textBoxDisplay_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
