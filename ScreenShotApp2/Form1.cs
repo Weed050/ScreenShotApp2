@@ -9,6 +9,7 @@ namespace ScreenShotApp2
     {
         public string directory1;
         public string directory;
+        public int x;
         public Form1()
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace ScreenShotApp2
             string strResultJson = string.Empty;
             strResultJson = File.ReadAllText(@"variables.json");
             Variables1 resultVariables = JsonConvert.DeserializeObject<Variables1>(strResultJson);
+            x = resultVariables.z;
             Console.WriteLine(resultVariables.directory);
             //Variables1 variables = new Variables1()
             //{
@@ -63,9 +65,11 @@ namespace ScreenShotApp2
 
             Image copy = pictureBox1.Image;
             string inc2 = "";
+            x = x + 1;
             this.Show();
             if (resultVariables.directory != null)
             {
+                inc2 = x.ToString();
                 string directory2 = "";
                 directory2 = resultVariables.directory.ToString();
                 textBoxDisplay.Text = directory2;
