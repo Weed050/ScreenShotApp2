@@ -28,75 +28,91 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxDisplay = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScreenShotApp));
+            textBoxDisplay = new TextBox();
+            button2 = new Button();
+            button = new Button();
+            pictureBox1 = new PictureBox();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            SuspendLayout();
             // 
             // textBoxDisplay
             // 
-            this.textBoxDisplay.BackColor = System.Drawing.Color.LightGray;
-            this.textBoxDisplay.Location = new System.Drawing.Point(12, 152);
-            this.textBoxDisplay.Name = "textBoxDisplay";
-            this.textBoxDisplay.Size = new System.Drawing.Size(458, 27);
-            this.textBoxDisplay.TabIndex = 1;
-            this.textBoxDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxDisplay.TextChanged += new System.EventHandler(this.textBoxDisplay_TextChanged);
+            textBoxDisplay.BackColor = Color.LightGray;
+            textBoxDisplay.Location = new Point(152, 152);
+            textBoxDisplay.Name = "textBoxDisplay";
+            textBoxDisplay.Size = new Size(318, 27);
+            textBoxDisplay.TabIndex = 1;
+            textBoxDisplay.TextAlign = HorizontalAlignment.Center;
+            textBoxDisplay.TextChanged += textBoxDisplay_TextChanged;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.Silver;
-            this.button2.Location = new System.Drawing.Point(256, 185);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(214, 29);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Take a screen shot";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.BackColor = Color.Silver;
+            button2.ForeColor = Color.Black;
+            button2.Location = new Point(256, 185);
+            button2.Name = "button2";
+            button2.Size = new Size(214, 29);
+            button2.TabIndex = 2;
+            button2.Text = "Take a screen shot";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button
             // 
-            this.button.BackColor = System.Drawing.Color.Silver;
-            this.button.Location = new System.Drawing.Point(12, 187);
-            this.button.Name = "button";
-            this.button.Size = new System.Drawing.Size(238, 29);
-            this.button.TabIndex = 3;
-            this.button.Text = "Select folder";
-            this.button.UseVisualStyleBackColor = false;
-            this.button.Click += new System.EventHandler(this.button1_Click);
+            button.BackColor = Color.Silver;
+            button.ForeColor = Color.Black;
+            button.Location = new Point(12, 187);
+            button.Name = "button";
+            button.Size = new Size(238, 29);
+            button.TabIndex = 3;
+            button.Text = "Select folder";
+            button.UseVisualStyleBackColor = false;
+            button.Click += button1_Click;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(458, 136);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(458, 136);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(25, 155);
+            label1.Name = "label1";
+            label1.Size = new Size(121, 20);
+            label1.TabIndex = 5;
+            label1.Text = "Enter a directory:";
             // 
             // ScreenShotApp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(482, 226);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBoxDisplay);
-            this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "ScreenShotApp";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Screen Shot App";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            ClientSize = new Size(482, 226);
+            Controls.Add(label1);
+            Controls.Add(pictureBox1);
+            Controls.Add(button);
+            Controls.Add(button2);
+            Controls.Add(textBoxDisplay);
+            ForeColor = Color.Transparent;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "ScreenShotApp";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Screen Shot App";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -104,5 +120,6 @@
         private Button button2;
         private Button button;
         private PictureBox pictureBox1;
+        private Label label1;
     }
 }
